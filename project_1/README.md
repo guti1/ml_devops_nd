@@ -3,7 +3,36 @@
 - Project **Predict Customer Churn** of ML DevOps Engineer Nanodegree Udacity
 
 ## Project Description
-<!--Your project description here.-->
+In the first project of the ND we try to predict the churn of credit card customers. The data we use is stemming from
+[Kaggle](https://www.kaggle.com/sakshigoyal7/credit-card-customers/code). Our starting point is the
+[churn notebook](churn_notebook.ipynb), the aim is to use that as base for refactoring it into a python project which
+follows coding (PEP8) and engineering best practices for implementing software (modular, documented, and tested).
+
+The project folder has the following structure:
+
+```bash
+└── project_1
+    ├── README.md
+    ├── churn_library.py
+    ├── churn_library_orig.py
+    ├── churn_notebook.ipynb
+    ├── churn_script_logging_and_tests.py
+    ├── churn_script_logging_and_tests_orig.py
+    ├── data
+    │   └── bank_data.csv
+    ├── images
+    │   ├── eda
+    │   └── results
+    ├── logs
+    ├── models
+    │   ├── logistic_model.pkl
+    │   └── rfc_model.pkl
+    ├── poetry.lock
+    └── pyproject.toml
+```
+
+Note the files with the `_orig.py` prefixes, these are the original project files, the ones without the prefix contains 
+the solutions.
 
 
 ## Running Files
