@@ -13,7 +13,7 @@ The project folder has the following structure:
 ```bash
 └── project_1
     ├── README.md
-    ├── churn_library.py
+    ├── churn_library_solution.py
     ├── churn_library_orig.py
     ├── churn_notebook.ipynb
     ├── churn_script_logging_and_tests.py
