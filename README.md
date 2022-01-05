@@ -13,5 +13,9 @@ In this project, we will implement our learnings to identify credit card custome
 
 ### Running Files
 
+In the project root execute `python churn_library_solution.py` or `python churn_script_logging_and_tests.py` in oder to test out the entire 
+pipeline, after the instructions in the project's [README](./project_1/README.md) are executed and the 
+requirements are met. 
+
 
 
