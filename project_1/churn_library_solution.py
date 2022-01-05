@@ -61,6 +61,9 @@ def import_data(path: str) -> pd.DataFrame:
         )
         abs_path = import_file_path.resolve(strict=True)
         imported_df = pd.read_csv(abs_path, index_col=0)
+        imported_df["Churn"] = imported_df["Attrition_Flag"].apply(
+            lambda val: 0 if val == "Existing Customer" else 1
+        )
         shape = imported_df.shape
         logging.info(
             f"SUCCESS: Imported data from {import_file_path} with shape of {shape}".format(
