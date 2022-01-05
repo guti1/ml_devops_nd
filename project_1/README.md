@@ -25,7 +25,7 @@ The project folder has the following structure:
     │   └── results
     ├── logs
     ├── models
-    │   ├── logistic_model.pkl
+    │   ├── lr_model.pkl
     │   └── rfc_model.pkl
     ├── poetry.lock
     └── pyproject.toml
