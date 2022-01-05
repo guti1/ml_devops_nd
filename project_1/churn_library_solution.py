@@ -6,8 +6,6 @@ artefacts as a rather minimal example for an end-to-end ML pipeline example.
 Author: JG
 2022-01
 """
-# import libraries
-
 import logging
 from pathlib import Path
 from typing import List, Tuple
@@ -22,8 +20,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, RocCurveDisplay
 from sklearn.model_selection import GridSearchCV, train_test_split
 
-# from sklearn.utils.validation import check_is_fitted
-# from sklearn.exceptions import NotFittedError
 
 DATE_FORMAT = "%y-%b-%d %H:%M:%S"
 logging.basicConfig(
@@ -31,7 +27,7 @@ logging.basicConfig(
     level=logging.INFO,
     filemode="w",
     datefmt=DATE_FORMAT,
-    format="%(asctime)s  %(name)s - %(levelname)s - %(message)s",
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 
 
@@ -391,7 +387,7 @@ if __name__ == "__main__":
         ],
         "Churn",
     )
-    x_train_, x_test_, y_train_, y_test_ = perform_feature_engineering(
+    X_train, X_test, y_train, y_test = perform_feature_engineering(
         encoded_data_df, "Churn"
     )
-    train_models(x_train_, x_test_, y_train_, y_test_)
+    train_models(X_train, X_test, y_train, y_test)
