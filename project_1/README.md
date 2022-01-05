@@ -45,10 +45,9 @@ We use thy python version 3.8.12 for this project.
 - install all the projects dependencies as `poetry install` in the project root
 
 In case you need additional packages you can add them as `poetry add package-name==version`, optionally with exact 
-versions. Packages can be updated also with poetry as `poetry update`.  
+versions. Packages can be updated also with poetry as `poetry update`. 
 
-
-
-
-
+As the project dependencies are available on your interpeter you can execute the pipeline by 
+`python churn_library_solution.py` or by `python churn_script_logging_and_tests.py` in oder to test out the entire 
+pipeline.
 
