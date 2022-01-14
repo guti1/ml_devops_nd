@@ -6,14 +6,15 @@ artefacts as a rather minimal example for an end-to-end ML pipeline example.
 Author: JG
 2022-01
 """
+import os
 import logging
 from pathlib import Path
 from typing import List, Tuple
 import joblib
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
-import shap
 from sklearn.base import ClassifierMixin
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
@@ -29,6 +30,7 @@ logging.basicConfig(
     datefmt=DATE_FORMAT,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
 
 
 class EmptyDataFrameException(Exception):
@@ -99,24 +101,28 @@ def perform_eda(dataframe: pd.DataFrame) -> None:
     for col in cols_to_plot_as_hist:
         plt.figure(figsize=(20, 10))
         dataframe[col].hist()
+        plt.title(f"Histogram of {col}")
         plt.savefig(f"./images/eda/{col}_hist.png")
         plt.clf()
 
     # Plot marital status value counts
     plt.figure(figsize=(20, 10))
     dataframe.Marital_Status.value_counts("normalize").plot(kind="bar")
+    plt.title("Marital status value counts")
     plt.savefig("./images/eda/marital_status_counts_barplot.png")
     plt.clf()
 
     # Plot distribution of total number of transactions
     plt.figure(figsize=(20, 10))
     sns.displot(dataframe["Total_Trans_Ct"])
+    plt.title("Distribution of total number of transactions")
     plt.savefig("./images/eda/total_transaction_counts_dist.png")
     plt.clf()
 
     # Plot correlation matrix
     plt.figure(figsize=(20, 10))
     sns.heatmap(dataframe.corr(), annot=False, cmap="Dark2_r", linewidths=2)
+    plt.title("Correlation matrix heatmap")
     plt.savefig("./images/eda/correlation_matrix_heatmap.png")
     plt.clf()
 
@@ -302,16 +308,32 @@ def feature_importance_plot(
     """
     creates and stores the feature importances in pth
     input:
-            model: model object containing feature_importances_
+            model: model object containing feature_importances
             X_data: pandas dataframe of X values
             output_pth: path to store the figure
 
     output:
              None
     """
-    explainer = shap.TreeExplainer(model)
-    shap_values = explainer.shap_values(X_data)
-    shap.summary_plot(shap_values, X_data, plot_type="bar")
+    importances = model.feature_importances_
+
+    # Sort feature importances in descending order
+    indices = np.argsort(importances)[::-1]
+
+    # Rearrange feature names so they match the sorted feature importances
+    names = [X_data.columns[i] for i in indices]
+
+    plt.figure(figsize=(20, 5))
+
+    # Create plot title
+    plt.title("Feature Importance")
+    plt.ylabel("Importance")
+
+    # Add bars
+    plt.bar(range(X_data.shape[1]), importances[indices])
+
+    # Add feature names as x-axis labels
+    plt.xticks(range(X_data.shape[1]), names, rotation=90)
     plt.savefig(output_pth)
     plt.clf()
 
@@ -361,12 +383,12 @@ def train_models(X_train, X_test, y_train, y_test) -> None:
         cv_rfc.best_estimator_, X_test, "./images/results/importance.png"
     )
 
-    plt.figure(figsize=(20, 10))
-    axis = plt.gca()
-    RocCurveDisplay.from_estimator(lrc, X_test, y_test, ax=axis)
-    RocCurveDisplay.from_estimator(cv_rfc.best_estimator_, X_test, y_test, ax=axis)
+    fig, ax = plt.subplots(1, figsize=(20, 10))
+    RocCurveDisplay.from_estimator(lrc, X_test, y_test, ax=ax).plot()
+    RocCurveDisplay.from_estimator(cv_rfc.best_estimator_, X_test, y_test, ax=ax).plot()
     plt.show()
-    plt.savefig("./images/results/classification_result_roc.png")
+    ax.set_title("ROC curves of the fitted models")
+    fig.savefig("./images/results/classification_result_roc.png")
     plt.clf()
 
     joblib.dump(cv_rfc.best_estimator_, "models/rfc_model.pkl")
