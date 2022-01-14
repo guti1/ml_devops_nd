@@ -1,7 +1,20 @@
+"""
+The "test-suite" for the customer churn prediction pipeline.
+The core-functionality can be found in churn_library_solution.py,
+where we process the churn-dataset, fit models on it and save the
+resulting artefacts.
+
+The logs will be generated in the ./logs folder.
+
+Author: JG
+2022-01
+"""
+
+
 import os
-import joblib
 import logging
 import shutil
+import joblib
 from sklearn.exceptions import NotFittedError
 import churn_library_solution as cls
 
@@ -39,7 +52,8 @@ def test_import():
 
 def test_eda():
     """
-    Test perform_eda function in pipeline, first we clean up the existing plots, than we regenerate them
+    Test perform_eda function in pipeline, first we clean up the existing plots,
+    than we regenerate them
     """
     names_of_plots_to_check = [
         "Churn_hist.png",
