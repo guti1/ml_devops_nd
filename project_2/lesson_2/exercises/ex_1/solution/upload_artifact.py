@@ -32,7 +32,7 @@ def go(args):
     artifact = wandb.Artifact(
         name=args.artifact_name,
         type=args.artifact_type,
-        description=args.description,
+        description=args.artifact_description,
     )
 
     # Attach the file provided as the parameter ``input_file`` to the artifact instance using
