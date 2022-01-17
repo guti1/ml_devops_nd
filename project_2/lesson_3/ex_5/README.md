@@ -36,14 +36,23 @@ Hints:
    - pip:
        - wandb==0.10.21
    ```
-3. You do NOT need to generate the profiles from pandas-profiling (and you also do not need pandas-profiling as a
+4. You do NOT need to generate the profiles from pandas-profiling (and you also do not need pandas-profiling as a
    dependency in ``conda.yml``)
-4. Save the cleaned data in a new artifact on W&B called ``preprocessed_data.csv``
-5. We are going to use the created artifact several times in the following exercises. Verify that you have an artifact
+5. Save the cleaned data in a new artifact on W&B called ``preprocessed_data.csv``
+6. We are going to use the created artifact several times in the following exercises. Verify that you have an artifact
    called ``preprocessed_data.csv`` under the project ``exercise_5``, so the following command works:
    ```bash
    wandb artifact get exercise_5/preprocessed_data.csv
    ```
    If it doesn't, check your exercise and fix it. Do not move on unless the command executes successfully, otherwise you
    won't be able to do some of the next exercises.
+
+7. mlflow execution in `./solution`:
+
+```bash
+mlflow run . --no-conda -P input_artifact="exercise_4/genres_mod.parquet:latest" \
+                        -P artifact_name="preprocessed_data.csv" \
+                        -P artifact_type="parquet" \
+                        -P artifact_description="processed data" 
+``` 
    
