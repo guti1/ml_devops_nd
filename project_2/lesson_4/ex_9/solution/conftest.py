@@ -11,6 +11,7 @@ def pytest_addoption(parser):
     parser.addoption("--sample_artifact", action="store")
 
     # COMPLETE HERE: add the option for ks_alpha
+    parser.addoption("--ks_alpha", action="store")
 
 
 @pytest.fixture(scope="session")
@@ -40,3 +41,6 @@ def ks_alpha(request):
 
     # COMPLETE HERE: read the option ks_alpha from the command line,
     # and return it as a float
+    alpha = request.config.option.ks_alpha
+    
+    return float(alpha)
