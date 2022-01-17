@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import argparse
 import logging
-import pathlib
-import wandb
 
+import wandb
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
@@ -18,7 +17,7 @@ def go(args):
 
     # YOUR CODE HERE: get the artifact and store its local path in the variable "artifact_path"
     # HINT: you can get the artifact path by using the "file()" method
-    artifact = run.use_artifact(args.artifact_name)
+
     artifact_path = artifact.file()
 
     logger.info("Artifact content:")

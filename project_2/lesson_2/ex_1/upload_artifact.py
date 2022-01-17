@@ -2,8 +2,6 @@
 import argparse
 import logging
 import pathlib
-import wandb
-
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()

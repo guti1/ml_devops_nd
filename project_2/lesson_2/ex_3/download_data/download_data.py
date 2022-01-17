@@ -2,17 +2,16 @@
 import argparse
 import logging
 import pathlib
-import wandb
-import requests
 import tempfile
 
+import requests
+import wandb
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
 
 def go(args):
-
     # Derive the base name of the file from the URL
     basename = pathlib.Path(args.file_url).name.split("?")[0].split("#")[0]
 
@@ -23,8 +22,8 @@ def go(args):
     logger.info(f"Downloading {args.file_url} ...")
     with tempfile.NamedTemporaryFile(mode='wb+') as fp:
 
-        logger.info("Creating run exercise_2")
-        with wandb.init(project="exercise_2", job_type="download_data") as run:
+        logger.info("Creating run")
+        with wandb.init(job_type="download_data") as run:
             # Download the file streaming and write to open temp file
             with requests.get(args.file_url, stream=True) as r:
                 for chunk in r.iter_content(chunk_size=8192):
@@ -45,10 +44,6 @@ def go(args):
 
             logger.info("Logging artifact")
             run.log_artifact(artifact)
-
-            # This makes sure that the artifact is uploaded before the
-            # tempfile is destroyed
-            artifact.wait()
 
 
 if __name__ == "__main__":

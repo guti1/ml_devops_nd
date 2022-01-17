@@ -143,3 +143,4 @@ cython_debug/
 .isorted
 wandb/
 artifacts/
+mlruns/

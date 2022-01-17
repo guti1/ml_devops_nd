@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 import argparse
 import logging
-import seaborn as sns
-import pandas as pd
-import wandb
 
+import pandas as pd
+import seaborn as sns
 from sklearn.manifold import TSNE
+
+import wandb
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
 
 def go(args):
-
     run = wandb.init(job_type="process_data")
 
     logger.info("Downloading artifact")

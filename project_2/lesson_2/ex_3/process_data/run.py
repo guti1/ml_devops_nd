@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import argparse
 import logging
-import seaborn as sns
-import pandas as pd
-import wandb
 
+import pandas as pd
+import seaborn as sns
+import wandb
 from sklearn.manifold import TSNE
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")

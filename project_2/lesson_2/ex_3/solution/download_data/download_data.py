@@ -2,17 +2,17 @@
 import argparse
 import logging
 import pathlib
-import wandb
-import requests
 import tempfile
 
+import requests
+
+import wandb
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
 
 def go(args):
-
     # Derive the base name of the file from the URL
     basename = pathlib.Path(args.file_url).name.split("?")[0].split("#")[0]
 
