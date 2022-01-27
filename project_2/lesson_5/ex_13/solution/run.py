@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 import argparse
 import logging
 import pandas as pd
@@ -35,7 +36,7 @@ def go(args):
 
     # Load the model using mlflow.sklearn.load_model
     ## YOUR CODE HERE
-    pipe = mlflow.sklearn.load_model(model_export_path)
+    pipe = mlflow.sklearn.load_model(os.path.join(model_export_path, "model_export"))
 
     # Compute the prediction from the model using .predict_proba on the test set
     ## YOUR CODE HERE
