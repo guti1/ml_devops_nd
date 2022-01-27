@@ -423,6 +423,18 @@ importlib-resources = {version = "*", markers = "python_version < \"3.9\""}
 omegaconf = ">=2.1.0,<2.2.0"
 
 [[package]]
+name = "hydra-joblib-launcher"
+version = "1.1.5"
+description = "Joblib Launcher for Hydra apps"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+hydra-core = ">=1.1.0.dev7"
+joblib = ">=0.14.0"
+
+[[package]]
 name = "idna"
 version = "2.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -1926,7 +1938,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "5c69ae033734f190c5903acc36f71377c90260c30253f88e697b9a77bbf1a044"
+content-hash = "cc90ee0c14ba36a9207c51de887576cc1e59a3ca168951ee87c2e63d42adaf93"
 
 [metadata.files]
 alembic = [
@@ -2212,6 +2224,10 @@ htmlmin = [
 hydra-core = [
     {file = "hydra-core-1.1.1.tar.gz", hash = "sha256:d396d4d979ff66e2d654b8ef5435ad3b6bbd093c4330f3ed316c339d5d741269"},
     {file = "hydra_core-1.1.1-py3-none-any.whl", hash = "sha256:928b154d8105db4ee67d768e3cd0f74ca9373121fc99dee54488393b17a31929"},
+]
+hydra-joblib-launcher = [
+    {file = "hydra-joblib-launcher-1.1.5.tar.gz", hash = "sha256:f18f3d1ffe3bc89930bf2c72209d7d01a1f4e842628c621dcfade7ca8b230d63"},
+    {file = "hydra_joblib_launcher-1.1.5-py3-none-any.whl", hash = "sha256:90578ce6898deda8c6ee3a767be0b5cdc99c6e911decc48b83d47933064f9716"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
