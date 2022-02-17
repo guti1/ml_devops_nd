@@ -6,7 +6,7 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-mlflow = "^1.22.0"
+mlflow = "1.22.0"
 wandb = "^0.12.9"
 hydra-core = "^1.1.1"
 requests = "2.24.0"
@@ -19,6 +19,7 @@ pytest = "^6.2.5"
 flake8 = "^4.0.1"
 plotly = "^5.5.0"
 hydra-joblib-launcher = "^1.1.5"
+jupyterlab = "^3.2.8"
 
 [tool.poetry.dev-dependencies]
 
