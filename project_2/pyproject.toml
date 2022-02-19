@@ -20,6 +20,8 @@ flake8 = "^4.0.1"
 plotly = "^5.5.0"
 hydra-joblib-launcher = "^1.1.5"
 jupyterlab = "^3.2.8"
+pip = "^22.0.3"
+cookiecutter = "^1.7.3"
 
 [tool.poetry.dev-dependencies]
 
