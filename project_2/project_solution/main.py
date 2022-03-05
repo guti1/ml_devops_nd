@@ -47,7 +47,7 @@ def go(config: DictConfig):
                     "artifact_name": "sample.csv",
                     "artifact_type": "raw_data",
                     "artifact_description": "Raw file as downloaded",
-                },
+                },#use_conda=False
             )
 
         if "basic_cleaning" in active_steps:
@@ -62,7 +62,7 @@ def go(config: DictConfig):
                     "output_description": "Data with outliers and null values removed",
                     "min_price": config["etl"]["min_price"],
                     "max_price": config["etl"]["max_price"],
-                },
+                },#use_conda=False
             )
 
         if "data_check" in active_steps:
@@ -76,7 +76,7 @@ def go(config: DictConfig):
                     "kl_threshold": config["data_check"]["kl_threshold"],
                     "min_price": config["etl"]["min_price"],
                     "max_price": config["etl"]["max_price"],
-                },
+                },#use_conda=False
             )
 
         if "data_split" in active_steps:
@@ -89,7 +89,7 @@ def go(config: DictConfig):
                     "test_size": config["modeling"]["test_size"],
                     "random_seed": config["modeling"]["random_seed"],
                     "stratify_by": config["modeling"]["stratify_by"],
-                }, use_conda=False
+                }, #use_conda=False
             )
 
         if "train_random_forest" in active_steps:
@@ -115,7 +115,7 @@ def go(config: DictConfig):
                     "rf_config": rf_config,
                     "max_tfidf_features": config["modeling"]["max_tfidf_features"],
                     "output_artifact": config["modeling"]["output_artifact"],
-                },use_conda=False
+                },#use_conda=False
             )
 
         if "test_regression_model" in active_steps:
@@ -129,7 +129,7 @@ def go(config: DictConfig):
                 parameters={
                     "mlflow_model": config["modeling"]["output_artifact"] + ":prod",
                     "test_dataset": "test_data.csv:latest",
-                }, use_conda=False
+                }, #use_conda=False
             )
 
 
