@@ -48,6 +48,8 @@ def go(args):
     shape_non_null = sample_dataframe_cleaned.shape
     logger.info(f"Dropped {(shape_with_nulls[0] - shape_non_null[0])} null values, DataFrame shape: {sample_dataframe_cleaned.shape}")
 
+    idx = sample_dataframe_cleaned['longitude'].between(-74.25, -73.50) & sample_dataframe_cleaned['latitude'].between(40.5, 41.2)
+    sample_dataframe_cleaned = sample_dataframe_cleaned[idx].copy()
     # save the cleaned dataframe
     logger.info(f"Saving {args.output_artifact}")
     sample_dataframe_cleaned.to_csv(args.output_artifact, index=False)
