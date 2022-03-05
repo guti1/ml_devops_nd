@@ -30,6 +30,7 @@ In this project you will build such a pipeline.
   * [Release the pipeline](#release-the-pipeline)
   * [Train the model on a new data sample](#train-the-model-on-a-new-data-sample)
 - [Cleaning up](#cleaning-up)
+- [WandB reference](#Weights-and-Biases-reference)
 
 ## Preliminary steps
 ### Fork the Starter kit
@@ -563,6 +564,10 @@ This will drop rows in the dataset that are not in the proper geolocation.
 Then commit your change, make a new release (for example ``1.0.1``) and retry (of course you need to use 
 ``-v 1.0.1`` when calling mlflow this time). Now the run should succeed and voit la', 
 you have trained your new model on the new data.
+
+### Weights and Biases reference
+
+The pipeline executions were logged via WnB, please see the results [here](https://wandb.ai/guti1/nyc_airbnb)
 
 ## License
 
