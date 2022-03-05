@@ -22,5 +22,16 @@ requirements are met. After execution the project pipeline gets executed as:
 4. model fitting: fit models, save model artefacts, feature importance plots, model perfomance eval reports.
 
 
-### Project 2
-TODO
+## Project 2 - Build an ML Pipeline for Short-Term Rental Prices in NYC
+
+### Project Description
+
+In this project we build an end-to-end pipeline to estimate the typical price for a given property based on the price of similar properties
+with the use of reusable components 
+
+### Running Files
+Please check the detailed [README](./project_2/project_solution/README.md) in the project root to execute the pipeline and reproduce the results.
+
+
+## Project 3 
+### TODO
