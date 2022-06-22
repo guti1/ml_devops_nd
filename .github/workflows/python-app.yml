@@ -5,16 +5,13 @@ name: Python application
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 'fix/**', 'feat/**' ]
   pull_request:
     branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ../project_3/project_solution
     strategy:
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
