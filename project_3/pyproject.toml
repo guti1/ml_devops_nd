@@ -15,6 +15,10 @@ jupyterlab = "^3.4.3"
 fastapi = "^0.78.0"
 uvicorn = "^0.17.6"
 black = "^22.3.0"
+flake8 = "^4.0.1"
+dvc = "^2.11.0"
+pre-commit = "^2.19.0"
+autopep8 = "^1.6.0"
 
 [tool.poetry.dev-dependencies]
 
